@@ -360,4 +360,16 @@ class Life_Client_Core {
         class vehTakeItem {};
         class vInteractionMenu {};
     };
+    
+    class OrdinateurPolice {
+        file = "core\cop\OrdinateurPolice";
+        class Connexion {};
+		class Accueil {};
+		class RecherchePersonne {};
+		class RechercheVehicule {};
+		class ListeRecherche {};
+		class ContacterBanque {};
+		class Dispatch {};
+		class Radio {};
+    };
 };

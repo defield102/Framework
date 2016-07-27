@@ -225,10 +225,10 @@ class playerSettings {
             };
         };
 
-        class ButtonGangList: Life_RscButtonMenu {
+        class OrdinateurPolice: Life_RscButtonMenu {
             idc = 2012;
-            text = "$STR_PM_WantedList";
-            onButtonClick = "[] call life_fnc_wantedMenu";
+			text = "Ordinateur";
+			onButtonClick = "createDialog ""Life_Cop_ConnexionOrdinateur"";";
             x = 0.1 + (6.25 / 19.8) + (1 / 250 / (safezoneW / safezoneH));
             y = 0.8 - (1 / 25);
             w = (6.25 / 40);

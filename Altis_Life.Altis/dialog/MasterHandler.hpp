@@ -29,3 +29,13 @@
 #include "FuelStat.hpp"
 #include "AltisPhone.hpp"
 #include "newsStation.hpp"
+//Ordinateur de police
+#include "OrdinateurPolice\ConnexionOrdinateur.hpp"
+#include "OrdinateurPolice\AccueilOrdinateur.hpp"
+#include "OrdinateurPolice\RecherchePersonneOrdinateur.hpp"
+#include "OrdinateurPolice\RechercheVehiculeOrdinateur.hpp"
+#include "OrdinateurPolice\ListeRechercheOrdinateur.hpp"
+#include "OrdinateurPolice\ContacterBanqueOrdinateur.hpp"
+#include "OrdinateurPolice\DispatchOrdinateur.hpp"
+#include "OrdinateurPolice\RadioOrdinateur.hpp"
+// Fin Ordinateur de police
