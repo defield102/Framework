@@ -110,6 +110,15 @@ class CfgFunctions {
             class setPlayTime {};
             class getPlayTime {};
         };
+        
+        class OrdinateurPolice {
+            file = "\life_server\Functions\OrdinateurPolice";
+            class initComputer {};
+            class addCrimes {};
+            class fetchCrimes {};
+            class getRadio {};
+            class setRadio {};
+        };
     };
 };
 
