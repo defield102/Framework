@@ -23,6 +23,6 @@ switch (_mode) do
 	{
 		if (isNil "CopComputer_ShortRadio") exitWith {};
 		[(call TFAR_fnc_activeSwRadio), 1, CopComputer_ShortRadio] call TFAR_fnc_SetChannelFrequency;
-		*hint "La fréquence de la radio courte portée à été mise à jour. (Canal 1)";
+		hint "La fréquence de la radio courte portée à été mise à jour. (Canal 1)";
 	};
 };

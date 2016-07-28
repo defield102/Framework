@@ -8,15 +8,14 @@
 */
 private _timeStamp = diag_tickTime;
 diag_log "----------------------------------------------------------------------------------------------------";
-diag_log "----------------------------------------- Cop Computer Init ----------------------------------------";
 
-private _query = ["SELECT type, value FROM computer";
+private _query = "SELECT type, value FROM computer";
 private _queryResult = [_query,2,true] call DB_fnc_asyncCall;
 
 if !(_queryResult isEqualTo []) then {
 	{
-		private _type = (_x select 0);
-		private _value = (_x select 1);
+		_type = (_x select 0);
+		_value = (_x select 1);
 		switch (_type) do
 		{
 			case "ShortRadio":
@@ -31,6 +30,8 @@ if !(_queryResult isEqualTo []) then {
 
 			default {};
 		};
+		if (isNil "CopComputer_ShortRadio") then { CopComputer_ShortRadio = "357.9";};
+		if (isNil "CopComputer_LongRadio") then { CopComputer_LongRadio = "49.5";};
 	} forEach _queryResult;
 } else {
 	_query = "INSERT INTO computer (type, value) VALUES ('ShortRadio', '357.9'), ('LongRadio', '49.5');";
@@ -38,4 +39,5 @@ if !(_queryResult isEqualTo []) then {
 	CopComputer_ShortRadio = "357.9";
 	CopComputer_LongRadio = "49.5";
 };
+diag_log format["----------------------------------------- Cop Computer Init ----------------------------------------",(diag_tickTime - _timeStamp)];
 diag_log "----------------------------------------------------------------------------------------------------";
