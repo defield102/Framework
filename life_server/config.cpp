@@ -114,6 +114,7 @@ class CfgFunctions {
         class OrdinateurPolice {
             file = "\life_server\Functions\OrdinateurPolice";
             class initComputer {};
+            class fetchCriminals {};
             class addCrimes {};
             class fetchCrimes {};
             class getRadio {};

@@ -109,6 +109,12 @@ class CfgRemoteExec {
         F(TON_fnc_vehicleStore,SERVER)
         F(TON_fnc_vehicleUpdate,SERVER)
         F(TON_fnc_handleBlastingCharge,SERVER)
+        
+        F(TON_fnc_addCrimes,SERVER)
+        F(TON_fnc_fetchCrimes,SERVER)
+        F(TON_fnc_getRadio,SERVER)
+        F(TON_fnc_setRadio,SERVER)
+        F(TON_fnc_fetchCriminals,SERVER)
 
         /* HeadlessClient only functions */
         F(HC_fnc_addContainer,HC)

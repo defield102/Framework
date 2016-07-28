@@ -371,5 +371,6 @@ class Life_Client_Core {
 		class ContacterBanque {};
 		class Dispatch {};
 		class Radio {};
+        class switchRadio {};
     };
 };

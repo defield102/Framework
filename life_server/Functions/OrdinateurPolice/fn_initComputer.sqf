@@ -13,7 +13,7 @@ diag_log "----------------------------------------- Cop Computer Init ----------
 private _query = ["SELECT type, value FROM computer";
 private _queryResult = [_query,2,true] call DB_fnc_asyncCall;
 
-if (_queryResult isEqualTo []) then {
+if !(_queryResult isEqualTo []) then {
 	{
 		private _type = (_x select 0);
 		private _value = (_x select 1);
@@ -32,5 +32,10 @@ if (_queryResult isEqualTo []) then {
 			default {};
 		};
 	} forEach _queryResult;
+} else {
+	_query = "INSERT INTO computer (type, value) VALUES ('ShortRadio', '357.9'), ('LongRadio', '49.5');";
+	[_query,1] call DB_fnc_asyncCall;
+	CopComputer_ShortRadio = "357.9";
+	CopComputer_LongRadio = "49.5";
 };
 diag_log "----------------------------------------------------------------------------------------------------";

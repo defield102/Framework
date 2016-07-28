@@ -4,36 +4,19 @@
 	Server: Altislife-france.com
 
 	Description:
-	Récupère la liste des joueurs ayant un casier
+	Récupère la liste des crimes d'un joueur
 */
 params [
-	["_sendTo", objNull, [objNull]]
+	["_sendTo", objNull, [objNull]],
+	["_criminal", [], [[]]]
 ];
-if (isNull _sendTo) exitWith {};
-_sendTo = owner _sendTo; //Retirer si utilisé sur HC
+if (isNull _unit OR _criminal isEqualTo []) exitWith {};
+_sendTo = owner _sendTo;
 
-private _units = { if ((side _x) == civilian) then {_units pushBack (getPlayerUID _x)}; } count playableUnits;
-if (_units isEqualTo []) exitWith {[[]] remoteExec ["life_fnc_wantedList",_sendTo];};
+_query = format["SELECT wantedCrimes FROM wanted WHERE wantedID='%1'",_criminal select 0];
+_queryResult = [_query,2] call DB_fnc_asyncCall;
 
-private _inStatement = "";
-{
-    if (count _units > 1) then {
-    	if (_inStatement isEqualTo "") then {
-            _inStatement = "'" + _x + "'";
-        } else {
-            _inStatement = _inStatement + ", '" + _x + "'";
-        };
-    } else {
-    	_inStatement = _x;
-    };
-} forEach _units;
+private _crimes = [_queryResult select 0] call DB_fnc_mresToArray;
+if (_crimes isEqualType "") then {_crimes = call compile format["%1", _crimes];};
 
-_query = format["SELECT wantedID, wantedName FROM wanted WHERE active='1' AND wantedID in (%1)",_inStatement];
-_queryResult = [_query,2,true] call DB_fnc_asyncCall;
-
-private _list = [];
-{
-	_list pushBack (_x);
-} forEach _queryResult;
-
-[_list] remoteExec ["life_fnc_wantedList",_sendTo];
+[_crimes] remoteExec ["life_fnc_updateCrimeList",_sendTo];
